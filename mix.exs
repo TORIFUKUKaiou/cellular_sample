@@ -3,7 +3,7 @@ defmodule CellularSample.MixProject do
 
   @app :cellular_sample
   @version "0.1.0"
-  @all_targets [:rpi4]
+  @all_targets [:rpi4, :custom_rpi4]
 
   def project do
     [
@@ -41,7 +41,14 @@ defmodule CellularSample.MixProject do
       {:nerves_pack, "~> 0.4.0", targets: @all_targets},
 
       # Dependencies for specific targets
-      {:nerves_system_rpi4, "~> 1.13", runtime: false, targets: :rpi4}
+      {:nerves_system_rpi4, "~> 1.13", runtime: false, targets: :rpi4},
+      {:custom_rpi4,
+       path: "../custom_rpi4", runtime: false, targets: :custom_rpi4, nerves: [compile: true]},
+      {:elixircom, "~> 0.2.0"},
+      {:circuits_i2c, "~> 0.3.8"},
+      {:httpoison, "~> 1.8"},
+      {:jason, "~> 1.2"},
+      {:timex, "~> 3.7"}
     ]
   end
 
